@@ -3,9 +3,8 @@ from user import User
 
 user = User("Anthony")
 
-my_movie = Movie("Terminator","Science Fiction",True)
+user.add_movie("Terminator", "Sci-Fi", )
+user.add_movie("Matrix", "Sci-Fi", )
 
-user.movies.append(my_movie)
-
-print(user.watched_movies())
+user.save_to_file()
 

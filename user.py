@@ -25,6 +25,13 @@ class User:
     def watched_movies(self):                                               #Get a list of movies that have been watched
         return list(filter(lambda movie: movie.watched, self.movies))       #Cast the filter to a list
 
+    def save_to_file(self):                                                 #CSV format
+        with open("{}.txt".format(self.name), "w") as f:
+            f.write(self.name + "\n")
+            for movie in self.movies:
+                f.write("{}, {}, {}\n".format(movie.name, movie.genre, str(movie.watched)))
+
+
         # Filter takes in:
         #   list of movies (self.movies)
         #   lambda function: returns True if movie.watched and False if movie was not watched
