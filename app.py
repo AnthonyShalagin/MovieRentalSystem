@@ -1,11 +1,11 @@
 from movie import Movie
 from user import User
 
-my_movie = Movie("Terminator","Science Fiction")
-
 user = User("Anthony")
+
+my_movie = Movie("Terminator","Science Fiction",True)
 
 user.movies.append(my_movie)
 
-print(user)
-print(user.movies)
+print(user.watched_movies())
+
