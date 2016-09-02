@@ -31,10 +31,26 @@ class User:
             for movie in self.movies:
                 f.write("{}, {}, {}\n".format(movie.name, movie.genre, str(movie.watched)))
 
+    @classmethod                         #Runs on the class itself
+    def load_from_file(cls,filename):
+        with open(filename, 'r') as f:
+            content = f.readlines()      #load content
+            username = content[0]        #extract username from first line
+            movies = []
+            for line in content[1:]:     #Start iterating from the first line
+                movie_data = line.split(",")  #['name', 'genre', 'watched']                  #Extract name, genre, and watched parameter
+                movies.append(Movie(movie_data[0], movie_data[1], movie_data[2] == "True"))  #Add to movies and check if watched
 
-        # Filter takes in:
-        #   list of movies (self.movies)
-        #   lambda function: returns True if movie.watched and False if movie was not watched
+            user = cls(username)
+            user.movies = movies
+            return user
+
+
+
+
+
+
+
 
 """
     def watched_movies(self):             #Get a list of movies that have been watched
