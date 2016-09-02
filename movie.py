@@ -9,3 +9,9 @@ class Movie:
         return "<Movie {}>".format(self.name)
 
 
+    def json(self):
+        return {
+            'name': self.name,
+            'genre': self.genre,
+            'watched': self.watched
+        }
