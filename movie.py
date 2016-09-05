@@ -15,3 +15,9 @@ class Movie:
             'genre': self.genre,
             'watched': self.watched
         }
+
+    @classmethod
+    def from_json(cls, json_data):
+        return Movie(**json_data)   #argument unpacking, dictionary that you're passing as a set of named parameters
+        #  same as:
+        #  return Movie(name = json_data['name'], genre = json_data['genre'], watched = json_data['watched'])
